@@ -1,3 +1,47 @@
 <resources>
+    <!-- Main page -->
+    <string name="header_main_screen">Поиск дешевых авиабилетов</string>
+    <string name="hint_from">Откуда - Москва</string>
+    <string name="hint_to">Куда - Турция</string>
+    <string name="header_concerts">Музыкально отлететь</string>
+    <string name="price_from">от %1$d ₽</string>
+    <string name="show_all_places">Показать все места</string>
+
+    <!--  Bottom navigation tabs  -->
+    <string name="tab_main">Авиабилеты</string>
+    <string name="tab_hotels">Отели</string>
+    <string name="tab_map">Короче</string>
+    <string name="tab_subscriptions">Подписки</string>
+    <string name="tab_profile">Профиль</string>
+
+    <!--  Search bottom sheet  -->
+    <string name="complicated_route">Сложный маршрут</string>
+    <string name="everywhere">Куда угодно</string>
+    <string name="holidays">Выходные</string>
+    <string name="hot_tickets">Горячие билеты</string>
+    <string name="popular_place">Популярное направление</string>
+    <string name="istanbul">Стамбул</string>
+    <string name="sochi">Сочи</string>
+    <string name="phuket">Пхукет</string>
+
+    <!--  Search - country is selected  -->
+    <string name="return_date">обратно</string>
+    <string name="passengers_class">1,эконом</string>
+    <string name="filters">фильтры</string>
+    <string name="direct_flights">Прямые рейсы</string>
+    <string name="show_all_tickets">Посмотреть все билеты</string>
+    <string name="subscribe_to_price_change">Подписка на цену</string>
+    <string name="ticket_price">%1$d ₽</string>
+
+    <!--  Search result - all tickets  -->
+    <string name="route">%1$s-%2$s</string>
+    <string name="date_passengers">%1$s, 1 пассажир</string>
+    <string name="filter">Фильтр</string>
+    <string name="price_chart">График цен</string>
+
+    <!--  Ticket card  -->
+    <string name="departure_arrival_time">%1$s — %2$s</string>
+    <string name="travel_time">%1$s в пути</string>
+    <string name="without_transfers">/Без пересадок</string>
 
 </resources>

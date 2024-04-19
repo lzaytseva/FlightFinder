@@ -22,3 +22,9 @@ dependencyResolutionManagement {
 rootProject.name = "Flight Finder"
 include(":app")
 include(":uikit")
+include(":search")
+include(":profile")
+include(":subscription")
+include(":hotels")
+include(":recommendations")
+include(":util")

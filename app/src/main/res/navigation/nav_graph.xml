@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/searchFragment">
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.github.lzaytseva.search.presentation.ui.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_flightDetailsFragment"
+            app:destination="@id/flightDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightDetailsFragment"
+        android:name="com.github.lzaytseva.search.presentation.ui.FlightDetailsFragment"
+        android:label="FlightDetailsFragment">
+        <action
+            android:id="@+id/action_flightDetailsFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.github.lzaytseva.search.presentation.ui.TicketsFragment"
+        android:label="TicketsFragment" />
+    <fragment
+        android:id="@+id/hotelsFragment"
+        android:name="com.github.lzaytseva.hotels.HotelsFragment"
+        android:label="HotelsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.github.lzaytseva.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/subscriptionFragment"
+        android:name="com.github.lzaytseva.subscription.SubscriptionFragment"
+        android:label="SubscriptionFragment" />
+    <fragment
+        android:id="@+id/recommendationsFragment"
+        android:name="com.github.lzaytseva.recommendations.RecommendationsFragment"
+        android:label="RecommendationsFragment" />
+</navigation>

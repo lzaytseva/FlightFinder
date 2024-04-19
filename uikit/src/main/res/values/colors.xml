@@ -18,4 +18,11 @@
     <color name="dark_green">#1E341F</color>
     <color name="red">#FF5E5E</color>
     <color name="orange">#F36E36</color>
+
+    <color name="background_color">@color/white</color>
+    <color name="selected_tab_icon_color">@color/blue</color>
+    <color name="unselected_tab_icon_color">@color/grey_5</color>
+    <color name="selected_tab_text_color">@color/blue</color>
+    <color name="unselected_tab_text_color">@color/grey_6</color>
+
 </resources>

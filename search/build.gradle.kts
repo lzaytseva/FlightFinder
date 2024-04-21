@@ -50,4 +50,5 @@ dependencies {
     implementation(libs.glide.core)
 
     implementation(project(":util"))
+    implementation(project(":uikit"))
 }

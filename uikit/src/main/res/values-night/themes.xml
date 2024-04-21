@@ -1,7 +1,0 @@
-<resources>
-
-    <style name="Theme.FlightFinder" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/black</item>
-    </style>
-
-</resources>

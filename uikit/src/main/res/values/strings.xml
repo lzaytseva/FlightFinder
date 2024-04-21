@@ -1,6 +1,6 @@
 <resources>
     <!-- Main page -->
-    <string name="header_main_screen">Поиск дешевых авиабилетов</string>
+    <string name="header_main_screen">Поиск дешевых\nавиабилетов</string>
     <string name="hint_from">Откуда - Москва</string>
     <string name="hint_to">Куда - Турция</string>
     <string name="header_concerts">Музыкально отлететь</string>
@@ -15,10 +15,10 @@
     <string name="tab_profile">Профиль</string>
 
     <!--  Search bottom sheet  -->
-    <string name="complicated_route">Сложный маршрут</string>
+    <string name="complicated_route">Сложный\nмаршрут</string>
     <string name="everywhere">Куда угодно</string>
     <string name="holidays">Выходные</string>
-    <string name="hot_tickets">Горячие билеты</string>
+    <string name="hot_tickets">Горячие\nбилеты</string>
     <string name="popular_place">Популярное направление</string>
     <string name="istanbul">Стамбул</string>
     <string name="sochi">Сочи</string>

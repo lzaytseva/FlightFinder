@@ -9,4 +9,5 @@ internal data class Ticket(
     val hasTransfer: Boolean,
     val id: Int,
     val price: String,
+    val travelTime: String
 )

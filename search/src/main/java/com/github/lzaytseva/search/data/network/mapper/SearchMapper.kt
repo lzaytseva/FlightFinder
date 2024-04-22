@@ -8,7 +8,9 @@ import com.github.lzaytseva.search.domain.model.Ticket
 import com.github.lzaytseva.search.domain.model.TicketOffer
 import com.github.lzaytseva.uikit.R
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Locale
+import kotlin.math.round
 
 internal fun TicketOfferDto.toDomain() = TicketOffer(
     id = id,
@@ -25,7 +27,8 @@ internal fun TicketDto.toDomain() = Ticket(
     departureAirportCode = departure.airport,
     arrivalAirportCode = arrival.airport,
     badge = badge,
-    hasTransfer = hasTransfer
+    hasTransfer = hasTransfer,
+    travelTime = countTravelTime(arrival.date, departure.date)
 )
 
 internal fun ConcertOfferDto.toDomain() = ConcertOffer(
@@ -50,4 +53,18 @@ private fun getConcertOfferImageResId(id: Int): Int {
         3 -> R.drawable.image_2
         else -> 0
     }
+}
+
+private fun countTravelTime(arrival: String, departure: String): String {
+    val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
+    val startDate = format.parse(departure)
+    val endDate = format.parse(arrival)
+
+    val durationMillis = endDate.time - startDate.time
+    val hours = durationMillis.toDouble() / (1000 * 60 * 60)
+    return roundToHalf(hours).toString()
+}
+
+private fun roundToHalf(number: Double): Double {
+    return round(number * 2.0) / 2.0
 }

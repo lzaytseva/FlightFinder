@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.lzaytseva.uikit.R
+import com.github.lzaytseva.search.R
 import com.github.lzaytseva.search.databinding.FragmentSearchBinding
 import com.github.lzaytseva.search.domain.model.ConcertOffer
 import com.github.lzaytseva.search.domain.model.PlaceOffer
@@ -186,7 +186,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
             goToPlaceholderScreen()
         }
         binding.ivEverywhere.setOnClickListener {
-            binding.etBsTo.setText(getString(R.string.everywhere))
+            binding.etBsTo.setText(getString(com.github.lzaytseva.uikit.R.string.everywhere))
         }
         binding.ivHoliday.setOnClickListener {
             goToPlaceholderScreen()
@@ -197,6 +197,6 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     }
 
     private fun goToPlaceholderScreen() {
-        findNavController().navigate(com.github.lzaytseva.search.R.id.action_flightDetailsFragment_to_placeholderFragment)
+        findNavController().navigate(R.id.action_searchFragment_to_placeholderFragment)
     }
 }

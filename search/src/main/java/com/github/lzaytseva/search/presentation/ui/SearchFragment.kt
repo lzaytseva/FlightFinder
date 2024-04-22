@@ -9,7 +9,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.lzaytseva.search.R
 import com.github.lzaytseva.search.databinding.FragmentSearchBinding
 import com.github.lzaytseva.search.domain.model.ConcertOffer
 import com.github.lzaytseva.search.domain.model.PlaceOffer
@@ -101,7 +103,10 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
             }
 
             is SearchScreenSideEffects.OpenFlightDetailsScreen -> {
-                // открыть след экран
+                findNavController().navigate(
+                    R.id.action_searchFragment_to_flightDetailsFragment,
+                    FlightDetailsFragment.createArgs(sideEffect.from, sideEffect.to)
+                )
             }
         }
     }
@@ -162,7 +167,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     }
 
     private fun setEditorActionListener() {
-        binding.etBsFrom.setOnEditorActionListener { v, actionId, event ->
+        binding.etBsTo.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.searchTickets(
                     from = binding.etBsFrom.text.toString(),

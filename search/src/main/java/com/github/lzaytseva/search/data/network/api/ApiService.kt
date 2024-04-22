@@ -4,7 +4,6 @@ import com.github.lzaytseva.search.data.network.dto.AllTicketsResponse
 import com.github.lzaytseva.search.data.network.dto.ConcertsOfferResponse
 import com.github.lzaytseva.search.data.network.dto.TicketsOfferResponse
 import retrofit2.http.GET
-import retrofit2.http.Headers
 
 internal interface ApiService {
 

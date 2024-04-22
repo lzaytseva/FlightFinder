@@ -10,7 +10,6 @@ import com.github.lzaytseva.search.data.repository.SearchRepositoryImpl
 import com.github.lzaytseva.search.data.storage.LastPlaceStorage
 import com.github.lzaytseva.search.data.storage.LastPlaceStorageImpl
 import com.github.lzaytseva.search.domain.api.SearchRepository
-import com.google.gson.GsonBuilder
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit

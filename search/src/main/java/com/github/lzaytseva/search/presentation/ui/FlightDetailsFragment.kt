@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lzaytseva.search.R
 import com.github.lzaytseva.search.databinding.FragmentFlightDetailsBinding
 import com.github.lzaytseva.search.domain.model.TicketOffer
-import com.github.lzaytseva.search.presentation.state.FlightDetailsScreenSideEffects
 import com.github.lzaytseva.search.presentation.state.FlightDetailsScreenState
 import com.github.lzaytseva.search.presentation.ui.adapter.TicketOfferAdapter
 import com.github.lzaytseva.search.presentation.viewmodel.FlightDetailsViewModel
@@ -71,13 +70,6 @@ internal class FlightDetailsFragment :
                 }
             }
         }
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.sideEffects.collect {
-                    handleSideEffects(it)
-                }
-            }
-        }
     }
 
     private fun updateUi(state: FlightDetailsScreenState) {
@@ -93,23 +85,12 @@ internal class FlightDetailsFragment :
     }
 
     private fun showContent(offers: List<TicketOffer>) {
-        adapter.submitList(offers)
-    }
-
-    private fun handleSideEffects(sideEffect: FlightDetailsScreenSideEffects) {
-        when (sideEffect) {
-            is FlightDetailsScreenSideEffects.Error -> {
-                showError(sideEffect.message)
-            }
+        if (offers.isEmpty()) {
+            binding.layoutTicketOffers.isVisible = false
+        } else {
+            binding.layoutTicketOffers.isVisible = true
+            adapter.submitList(offers)
         }
-    }
-
-    private fun showError(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun setupRoute() {

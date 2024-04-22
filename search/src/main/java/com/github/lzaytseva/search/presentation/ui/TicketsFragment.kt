@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.lzaytseva.search.databinding.FragmentTicketsBinding
 import com.github.lzaytseva.search.domain.model.Ticket
-import com.github.lzaytseva.search.presentation.state.TicketsScreenSideEffects
 import com.github.lzaytseva.search.presentation.state.TicketsScreenState
 import com.github.lzaytseva.search.presentation.ui.adapter.TicketAdapter
 import com.github.lzaytseva.search.presentation.viewmodel.TicketsViewModel
@@ -50,13 +49,6 @@ internal class TicketsFragment : BaseFragment<FragmentTicketsBinding, TicketsVie
                 }
             }
         }
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.sideEffects.collect {
-                    handleSideEffects(it)
-                }
-            }
-        }
     }
 
     private fun updateUi(state: TicketsScreenState) {
@@ -72,25 +64,12 @@ internal class TicketsFragment : BaseFragment<FragmentTicketsBinding, TicketsVie
     }
 
     private fun showContent(tickets: List<Ticket>) {
-        binding.rvTickets.isVisible = true
-        adapter.submitList(tickets)
-    }
-
-    private fun handleSideEffects(sideEffect: TicketsScreenSideEffects) {
-        when (sideEffect) {
-            is TicketsScreenSideEffects.Error -> {
-                binding.rvTickets.isVisible = false
-                showError(sideEffect.message)
-            }
+        if (tickets.isEmpty()) {
+            binding.rvTickets.isVisible = false
+        } else {
+            binding.rvTickets.isVisible = true
+            adapter.submitList(tickets)
         }
-    }
-
-    private fun showError(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun setFlightInfo() {

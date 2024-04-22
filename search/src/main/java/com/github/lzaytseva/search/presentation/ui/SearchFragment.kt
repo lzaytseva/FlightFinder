@@ -79,6 +79,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
                 showContent(state)
             }
 
+
             SearchScreenState.Initial -> {
                 // no-op
             }
@@ -111,10 +112,6 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
 
     private fun handleSideEffects(sideEffect: SearchScreenSideEffects) {
         when (sideEffect) {
-            is SearchScreenSideEffects.Error -> {
-                showError(sideEffect.message)
-            }
-
             is SearchScreenSideEffects.OpenFlightDetailsScreen -> {
                 findNavController().navigate(
                     R.id.action_searchFragment_to_flightDetailsFragment,

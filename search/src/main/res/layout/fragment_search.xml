@@ -84,6 +84,9 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:hint="@string/hint_to"
                         android:textColor="@color/main_text_color"
                         android:textColorHint="@color/grey_6"
@@ -96,6 +99,7 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/tv_header_concerts"
                 style="@style/FlightFinder.Text.Title_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,25 +116,13 @@
                 tools:itemCount="1"
                 tools:listitem="@layout/item_concert_offer" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/button_grey_3_rounded_corners"
-                android:gravity="center"
-                android:padding="12dp"
-                android:text="@string/show_all_places"
-                android:textAllCaps="false"
-                android:textAppearance="@style/FlightFinder.Text.Button_text"
-                android:textColor="@color/main_text_color" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <!--  Вёрстка bottom sheet  -->
     <LinearLayout
-        android:id="@+id/playlists_bottom_sheet"
+        android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bottom_sheet_bg"
@@ -167,6 +159,9 @@
                 android:id="@+id/et_bs_from"
                 style="@style/FlightFinder.Text.Button_text"
                 android:layout_width="0dp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@android:color/transparent"
@@ -204,16 +199,26 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionSearch"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                android:drawableEnd="@drawable/ic_close"
-                android:drawableTint="@color/white"
                 android:hint="@string/hint_to"
                 android:textColor="@color/main_text_color"
                 android:textColorHint="@color/grey_6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ic_to"
                 app:layout_constraintTop_toBottomOf="@+id/bs_divider" />
+            
+            <ImageView
+                android:id="@+id/btn_clear"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/grey_6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -274,6 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
+                android:gravity="center"
                 android:text="@string/complicated_route"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@id/iv_complicated_route"
@@ -317,6 +323,7 @@
                 style="@style/FlightFinder.Text.Text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:maxLines="2"
                 android:text="@string/hot_tickets"
                 android:textColor="@color/white"
@@ -328,6 +335,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular_places"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

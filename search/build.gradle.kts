@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.koin)
     implementation(libs.glide.core)
+    implementation(libs.nav.ui)
+    implementation(libs.nav.fragment)
 
     implementation(project(":util"))
     implementation(project(":uikit"))

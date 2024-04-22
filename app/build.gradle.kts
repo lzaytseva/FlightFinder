@@ -48,6 +48,7 @@ dependencies {
 
     implementation(libs.nav.ui)
     implementation(libs.nav.fragment)
+    implementation(libs.koin)
 
     implementation(project(":uikit"))
     implementation(project(":util"))

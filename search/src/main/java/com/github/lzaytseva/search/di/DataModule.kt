@@ -8,10 +8,12 @@ import com.github.lzaytseva.search.data.network.impl.SearchMockDataSource
 import com.github.lzaytseva.search.data.network.impl.SearchRemoteDataSourceImpl
 import com.github.lzaytseva.search.data.repository.FlightDetailsRepositoryImpl
 import com.github.lzaytseva.search.data.repository.SearchRepositoryImpl
+import com.github.lzaytseva.search.data.repository.TicketsRepositoryImpl
 import com.github.lzaytseva.search.data.storage.LastPlaceStorage
 import com.github.lzaytseva.search.data.storage.LastPlaceStorageImpl
 import com.github.lzaytseva.search.domain.api.FlightDetailsRepository
 import com.github.lzaytseva.search.domain.api.SearchRepository
+import com.github.lzaytseva.search.domain.api.TicketsRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -61,6 +63,10 @@ internal val dataModule = module {
     single<FlightDetailsRepository> {
         FlightDetailsRepositoryImpl(searchRemoteDataSource = get())
     }
+    single<TicketsRepository> {
+        TicketsRepositoryImpl(searchRemoteDataSource = get())
+    }
+
 }
 
 private const val BASE_URL = "https://drive.google.com/"

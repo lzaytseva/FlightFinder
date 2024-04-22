@@ -1,5 +1,7 @@
 package com.github.lzaytseva.search.presentation.ui
 
+import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
@@ -35,6 +37,14 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
         binding.etBsTo.setText(it)
     }
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
+    private var bottomSheetWasOpened = false
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (bottomSheetWasOpened) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+    }
 
     override fun onConfigureViews() {
         initConcertsRecyclerView()
@@ -140,6 +150,19 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet).apply {
             state = BottomSheetBehavior.STATE_HIDDEN
         }
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(p0: View, p1: Int) {
+                if (p1 == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetWasOpened = true
+                } else if (p1 == BottomSheetBehavior.STATE_HIDDEN) {
+                    bottomSheetWasOpened = false
+                }
+            }
+
+            override fun onSlide(p0: View, p1: Float) {}
+
+        })
     }
 
     private fun setOnDestinationClickListener() {

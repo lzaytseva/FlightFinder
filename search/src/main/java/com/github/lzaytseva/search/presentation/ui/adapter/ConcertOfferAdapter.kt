@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.github.lzaytseva.search.databinding.ItemConcertOfferBinding
 import com.github.lzaytseva.search.domain.model.ConcertOffer
@@ -34,6 +35,7 @@ internal class ConcertOfferAdapter :
             binding.tvTitle.text = offer.title
             Glide.with(itemView)
                 .load(offer.imageResId)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(
                     RoundedCorners(itemView.resources.getDimensionPixelSize(R.dimen.place_image_corners_radius))
                 )

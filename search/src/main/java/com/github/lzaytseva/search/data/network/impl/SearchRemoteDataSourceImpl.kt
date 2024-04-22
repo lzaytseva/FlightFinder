@@ -7,6 +7,8 @@ import com.github.lzaytseva.search.data.network.dto.AllTicketsResponse
 import com.github.lzaytseva.search.data.network.dto.ConcertsOfferResponse
 import com.github.lzaytseva.search.data.network.dto.TicketsOfferResponse
 import com.github.lzaytseva.util.ConnectionChecker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 internal class SearchRemoteDataSourceImpl(
     private val context: Context,
@@ -14,17 +16,23 @@ internal class SearchRemoteDataSourceImpl(
 ) : SearchRemoteDataSource {
     override suspend fun getConcertsOffer(): ConcertsOfferResponse {
         checkConnection()
-        return apiService.getConcertsOffer()
+        return withContext(Dispatchers.IO) {
+            apiService.getConcertsOffer()
+        }
     }
 
     override suspend fun getTicketsOffer(): TicketsOfferResponse {
         checkConnection()
-        return apiService.getTicketsOffer()
+        return withContext(Dispatchers.IO) {
+            apiService.getTicketsOffer()
+        }
     }
 
     override suspend fun getAllTickets(): AllTicketsResponse {
         checkConnection()
-        return apiService.getAllTickets()
+        return withContext(Dispatchers.IO) {
+            apiService.getAllTickets()
+        }
     }
 
     private fun checkConnection() {

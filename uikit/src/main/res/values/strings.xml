@@ -5,7 +5,6 @@
     <string name="hint_to">Куда - Турция</string>
     <string name="header_concerts">Музыкально отлететь</string>
     <string name="price_from">от %1$s ₽</string>
-    <string name="show_all_places">Показать все места</string>
 
     <!--  Bottom navigation tabs  -->
     <string name="tab_main">Авиабилеты</string>

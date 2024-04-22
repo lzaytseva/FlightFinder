@@ -10,7 +10,9 @@ import com.github.lzaytseva.search.databinding.ItemPlaceRecommendationBinding
 import com.github.lzaytseva.search.domain.model.PlaceOffer
 import com.github.lzaytseva.uikit.R
 
-internal class PlaceOfferAdapter :
+internal class PlaceOfferAdapter(
+    private val onPlaceClickListener: (String) -> Unit
+) :
     ListAdapter<PlaceOffer, PlaceOfferAdapter.DestinationViewHolder>(PlaceOfferDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder {
@@ -23,7 +25,12 @@ internal class PlaceOfferAdapter :
     }
 
     override fun onBindViewHolder(holder: DestinationViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        val placeOffer = currentList[position]
+        holder.bind(placeOffer)
+        holder.itemView.setOnClickListener {
+            onPlaceClickListener.invoke(placeOffer.city)
+        }
+
     }
 
     internal class DestinationViewHolder(private val binding: ItemPlaceRecommendationBinding) :

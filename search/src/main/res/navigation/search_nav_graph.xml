@@ -21,10 +21,17 @@
         <action
             android:id="@+id/action_flightDetailsFragment_to_ticketsFragment"
             app:destination="@id/ticketsFragment" />
+        <action
+            android:id="@+id/action_flightDetailsFragment_to_placeholderFragment"
+            app:destination="@id/placeholderFragment" />
     </fragment>
     <fragment
         android:id="@+id/ticketsFragment"
         android:name="com.github.lzaytseva.search.presentation.ui.TicketsFragment"
         android:label="fragment_tickets"
         tools:layout="@layout/fragment_tickets" />
+    <fragment
+        android:id="@+id/placeholderFragment"
+        android:name="com.github.lzaytseva.search.presentation.ui.PlaceholderFragment"
+        android:label="PlaceholderFragment" />
 </navigation>

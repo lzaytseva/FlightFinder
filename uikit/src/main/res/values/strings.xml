@@ -44,4 +44,7 @@
     <string name="travel_time">%1$s в пути</string>
     <string name="without_transfers">/Без пересадок</string>
 
+    <!--  Other  -->
+    <string name="placeholder_text">Эта фича еще не реализована</string>
+
 </resources>

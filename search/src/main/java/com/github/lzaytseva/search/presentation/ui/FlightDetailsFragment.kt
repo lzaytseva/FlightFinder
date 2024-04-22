@@ -33,10 +33,12 @@ internal class FlightDetailsFragment :
     private var to = ""
 
     private val adapter = TicketOfferAdapter()
+
     private val calendar = Calendar.getInstance()
     private var currentDay = 0
     private var currentMonth = 0
     private var currentYear = 0
+    private var departureDate = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,6 +132,12 @@ internal class FlightDetailsFragment :
         val (dayMonth, weekDay) = getDisplayedDate(year, month, day)
         binding.tvDayMonth.text = dayMonth
         binding.tvDayOfWeek.text = weekDay
+        val longDisplayMonth = calendar.getDisplayName(
+            Calendar.MONTH,
+            Calendar.LONG_FORMAT,
+            Locale("ru")
+        )
+        departureDate = "$day $longDisplayMonth"
     }
 
     private fun setDateToReturnBtn(year: Int, month: Int, day: Int) {
@@ -202,8 +210,15 @@ internal class FlightDetailsFragment :
     }
 
     private fun setOnShowTicketsBtnClickListener() {
+        val route = "${binding.tvFrom.text}-${binding.tvTo.text}"
         binding.btnShowAllTickets.setOnClickListener {
-            findNavController().navigate(R.id.action_flightDetailsFragment_to_ticketsFragment)
+            findNavController().navigate(
+                R.id.action_flightDetailsFragment_to_ticketsFragment,
+                TicketsFragment.createArgs(
+                    route = route,
+                    date = departureDate
+                )
+            )
         }
     }
 

@@ -44,7 +44,8 @@ private fun Int.formatPrice(): String {
     return format.format(this).replace(",", " ")
 }
 
-private fun String.getTimeFromDate() = substringAfter(':')
+private fun String.getTimeFromDate() = substringAfter('T').substringBeforeLast(":")
+
 
 private fun getConcertOfferImageResId(id: Int): Int {
     return when (id) {

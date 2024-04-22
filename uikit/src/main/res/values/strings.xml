@@ -33,15 +33,14 @@
     <string name="ticket_price">%1$s ₽</string>
 
     <!--  Search result - all tickets  -->
-    <string name="route">%1$s-%2$s</string>
     <string name="date_passengers">%1$s, 1 пассажир</string>
     <string name="filter">Фильтр</string>
     <string name="price_chart">График цен</string>
 
     <!--  Ticket card  -->
     <string name="departure_arrival_time">%1$s — %2$s</string>
-    <string name="travel_time">%1$s в пути</string>
-    <string name="without_transfers">/Без пересадок</string>
+    <string name="travel_time">%1$sч в пути</string>
+    <string name="without_transfers">\u0020/ Без пересадок</string>
 
     <!--  Other  -->
     <string name="placeholder_text">Эта фича еще не реализована</string>

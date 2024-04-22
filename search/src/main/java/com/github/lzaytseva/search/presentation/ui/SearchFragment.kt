@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.lzaytseva.search.R
+import com.github.lzaytseva.uikit.R
 import com.github.lzaytseva.search.databinding.FragmentSearchBinding
 import com.github.lzaytseva.search.domain.model.ConcertOffer
 import com.github.lzaytseva.search.domain.model.PlaceOffer
@@ -31,7 +31,9 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     override val viewModel: SearchViewModel by viewModel()
 
     private val concertsAdapter = ConcertOfferAdapter()
-    private val placesAdapter = PlaceOfferAdapter()
+    private val placesAdapter = PlaceOfferAdapter {
+        binding.etBsTo.setText(it)
+    }
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
 
     override fun onConfigureViews() {
@@ -41,6 +43,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
         setOnDestinationClickListener()
         setOnClearBtnClickListener()
         setEditorActionListener()
+        setOnTripSuggestionsClickListener()
     }
 
     override fun onSubscribe() {
@@ -167,7 +170,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     }
 
     private fun setEditorActionListener() {
-        binding.etBsTo.setOnEditorActionListener { v, actionId, event ->
+        binding.etBsFrom.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.searchTickets(
                     from = binding.etBsFrom.text.toString(),
@@ -176,5 +179,24 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
             }
             false
         }
+    }
+
+    private fun setOnTripSuggestionsClickListener() {
+        binding.ivComplicatedRoute.setOnClickListener {
+            goToPlaceholderScreen()
+        }
+        binding.ivEverywhere.setOnClickListener {
+            binding.etBsTo.setText(getString(R.string.everywhere))
+        }
+        binding.ivHoliday.setOnClickListener {
+            goToPlaceholderScreen()
+        }
+        binding.ivHotTickets.setOnClickListener {
+            goToPlaceholderScreen()
+        }
+    }
+
+    private fun goToPlaceholderScreen() {
+        findNavController().navigate(com.github.lzaytseva.search.R.id.action_flightDetailsFragment_to_placeholderFragment)
     }
 }

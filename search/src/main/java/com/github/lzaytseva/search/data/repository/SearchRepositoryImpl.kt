@@ -14,6 +14,7 @@ internal class SearchRepositoryImpl(
     private val searchMockDataSource: SearchMockDataSource,
     private val lastPlaceStorage: LastPlaceStorage
 ) : SearchRepository {
+
     override suspend fun getConcertOffers(): Resource<List<ConcertOffer>> {
         return try {
             val response = searchRemoteDataSource.getConcertsOffer()

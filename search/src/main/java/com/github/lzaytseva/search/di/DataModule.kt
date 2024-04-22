@@ -6,9 +6,11 @@ import com.github.lzaytseva.search.data.network.api.ApiService
 import com.github.lzaytseva.search.data.network.api.SearchRemoteDataSource
 import com.github.lzaytseva.search.data.network.impl.SearchMockDataSource
 import com.github.lzaytseva.search.data.network.impl.SearchRemoteDataSourceImpl
+import com.github.lzaytseva.search.data.repository.FlightDetailsRepositoryImpl
 import com.github.lzaytseva.search.data.repository.SearchRepositoryImpl
 import com.github.lzaytseva.search.data.storage.LastPlaceStorage
 import com.github.lzaytseva.search.data.storage.LastPlaceStorageImpl
+import com.github.lzaytseva.search.domain.api.FlightDetailsRepository
 import com.github.lzaytseva.search.domain.api.SearchRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -54,6 +56,10 @@ internal val dataModule = module {
     single<SharedPreferences> {
         androidContext()
             .getSharedPreferences(FLIGHT_FINDER_PREFERENCES, Context.MODE_PRIVATE)
+    }
+
+    single<FlightDetailsRepository> {
+        FlightDetailsRepositoryImpl(searchRemoteDataSource = get())
     }
 }
 

@@ -30,7 +30,7 @@
     <string name="direct_flights">Прямые рейсы</string>
     <string name="show_all_tickets">Посмотреть все билеты</string>
     <string name="subscribe_to_price_change">Подписка на цену</string>
-    <string name="ticket_price">%1$d ₽</string>
+    <string name="ticket_price">%1$s ₽</string>
 
     <!--  Search result - all tickets  -->
     <string name="route">%1$s-%2$s</string>

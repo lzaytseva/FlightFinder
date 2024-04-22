@@ -193,7 +193,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     }
 
     private fun setEditorActionListener() {
-        binding.etBsFrom.setOnEditorActionListener { v, actionId, event ->
+        binding.etBsTo.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.searchTickets(
                     from = binding.etBsFrom.text.toString(),

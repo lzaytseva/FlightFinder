@@ -7,7 +7,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.lzaytseva.search.R
 import com.github.lzaytseva.search.databinding.FragmentFlightDetailsBinding
 import com.github.lzaytseva.search.domain.model.TicketOffer
 import com.github.lzaytseva.search.presentation.state.FlightDetailsScreenSideEffects
@@ -56,6 +58,7 @@ internal class FlightDetailsFragment :
         setOnReturnDateClickListener()
         setOnSwapBtnClickListener()
         setOnClearBtnClickListener()
+        setOnShowTicketsBtnClickListener()
     }
 
     override fun onSubscribe() {
@@ -195,6 +198,12 @@ internal class FlightDetailsFragment :
     private fun setOnClearBtnClickListener() {
         binding.btnClear.setOnClickListener {
             binding.tvTo.text = EMPTY_STRING
+        }
+    }
+
+    private fun setOnShowTicketsBtnClickListener() {
+        binding.btnShowAllTickets.setOnClickListener {
+            findNavController().navigate(R.id.action_flightDetailsFragment_to_ticketsFragment)
         }
     }
 

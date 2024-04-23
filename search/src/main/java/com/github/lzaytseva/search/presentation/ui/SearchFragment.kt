@@ -21,6 +21,7 @@ import com.github.lzaytseva.search.presentation.state.SearchScreenSideEffects
 import com.github.lzaytseva.search.presentation.state.SearchScreenState
 import com.github.lzaytseva.search.presentation.ui.adapter.ConcertOfferAdapter
 import com.github.lzaytseva.search.presentation.ui.adapter.PlaceOfferAdapter
+import com.github.lzaytseva.search.presentation.ui.util.CyrillicInputFilter
 import com.github.lzaytseva.search.presentation.viewmodel.SearchViewModel
 import com.github.lzaytseva.util.BaseFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -39,6 +40,8 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private var bottomSheetWasOpened = false
 
+    private val editTextFilter = CyrillicInputFilter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (bottomSheetWasOpened) {
@@ -47,6 +50,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     }
 
     override fun onConfigureViews() {
+        setUpEditTextFilters()
         initConcertsRecyclerView()
         initPopularPlacesRecyclerView()
         initBottomSheet()
@@ -121,12 +125,10 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
         }
     }
 
-    private fun showError(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
+    private fun setUpEditTextFilters() {
+        binding.etFrom.filters = arrayOf(editTextFilter)
+        binding.etBsFrom.filters = arrayOf(editTextFilter)
+        binding.etBsTo.filters = arrayOf(editTextFilter)
     }
 
     private fun initConcertsRecyclerView() {

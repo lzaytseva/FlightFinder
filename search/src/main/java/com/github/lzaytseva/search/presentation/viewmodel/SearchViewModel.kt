@@ -2,7 +2,6 @@ package com.github.lzaytseva.search.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.github.lzaytseva.search.domain.api.SearchInteractor
-import com.github.lzaytseva.search.presentation.state.FlightDetailsScreenState
 import com.github.lzaytseva.search.presentation.state.SearchScreenSideEffects
 import com.github.lzaytseva.search.presentation.state.SearchScreenState
 import com.github.lzaytseva.util.BaseViewModel

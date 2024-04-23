@@ -15,12 +15,18 @@ class CyrillicInputFilter : InputFilter {
         // Проверяем каждый введенный символ
         for (i in start until end) {
             val c = source?.get(i)
-            if (c != null && !Character.UnicodeBlock.of(c)?.equals(Character.UnicodeBlock.CYRILLIC)!!) {
-                // Если символ не кириллический, возвращаем пустую строку
+            // Разрешаем кириллицу, пробел и дефис
+            if (c != null && !c.isCyrillic() && c != ' ' && c != '-') {
+                // Если символ не кириллический, пробел или дефис, возвращаем пустую строку
                 return ""
             }
         }
         // Все символы валидны, возвращаем null (ничего не фильтруем)
         return null
+    }
+
+    // Расширение для проверки, является ли символ кириллическим
+    private fun Char.isCyrillic(): Boolean {
+        return Character.UnicodeBlock.of(this) == Character.UnicodeBlock.CYRILLIC
     }
 }

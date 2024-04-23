@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.github.lzaytseva.search.databinding.ItemPlaceRecommendationBinding
 import com.github.lzaytseva.search.domain.model.PlaceOffer
@@ -40,6 +41,7 @@ internal class PlaceOfferAdapter(
             binding.tvDescription.text = placeOffer.description
             Glide.with(itemView)
                 .load(placeOffer.imageResId)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .transform(
                     RoundedCorners(itemView.resources.getDimensionPixelSize(R.dimen.concert_poster_corners_radius))
                 )

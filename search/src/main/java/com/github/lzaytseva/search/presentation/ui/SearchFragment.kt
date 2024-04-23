@@ -5,7 +5,6 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
@@ -194,6 +193,7 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
     private fun setEditorActionListener() {
         binding.etBsTo.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                binding.etTo.setText(binding.etBsTo.text.toString())
                 viewModel.searchTickets(
                     from = binding.etBsFrom.text.toString(),
                     to = binding.etBsTo.text.toString()

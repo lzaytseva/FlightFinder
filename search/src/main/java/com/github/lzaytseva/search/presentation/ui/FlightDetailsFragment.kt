@@ -59,6 +59,7 @@ internal class FlightDetailsFragment :
         setOnSwapBtnClickListener()
         setOnClearBtnClickListener()
         setOnShowTicketsBtnClickListener()
+        setOnBackButtonClickListener()
     }
 
     override fun onSubscribe() {
@@ -199,6 +200,12 @@ internal class FlightDetailsFragment :
                     date = departureDate
                 )
             )
+        }
+    }
+
+    private fun setOnBackButtonClickListener() {
+        binding.icBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

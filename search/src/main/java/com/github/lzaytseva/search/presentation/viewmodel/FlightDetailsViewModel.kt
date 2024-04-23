@@ -5,9 +5,7 @@ import com.github.lzaytseva.search.domain.api.FlightDetailsInteractor
 import com.github.lzaytseva.search.presentation.state.FlightDetailsScreenState
 import com.github.lzaytseva.util.BaseViewModel
 import com.github.lzaytseva.util.Resource
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 

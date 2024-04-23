@@ -2,7 +2,6 @@ package com.github.lzaytseva.search.presentation.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
